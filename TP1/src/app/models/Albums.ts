@@ -1,7 +1,8 @@
 export class Album{
     constructor(
-        public name : string,
-        public NomArtiste : string,
-        public NumChansons : number
+        public titre : string,
+        public Artiste : string,
+        public NumChansons : number,
+        public image : string
     ){}
 }
