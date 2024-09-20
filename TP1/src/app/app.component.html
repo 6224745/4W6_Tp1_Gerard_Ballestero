@@ -5,21 +5,23 @@
   </header>
   <div class="row">
     <div class="col-3">
-      <form (ngSubmit)="searchArtist()" *ngIf="!result">
+      <form (ngSubmit)="searchArtist()">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
-      <form (ngSubmit)="newSearch()" *ngIf="result">
-        <input type="submit" value="Nouvelle recherche">
+      <form (ngSubmit)="newSearch()" >
+        <input type="submit" value="Nouvelle recherche" class="btn btn-light">
       </form>
     </div>
     <div class="col artists">
-        <h2>Résultats</h2>
-        <div *ngIf="result">
-          <h3>Albums de {{artist}}</h3>
-          <ul>
-            <li *ngFor="let a of ListAlbum">{{a}}</li>
-          </ul>
+      <h3>Albums de l'artiste {{artist}}</h3>
+        <div class="album">
+          <div *ngFor="let album of ListAlbum">
+              <div class="card">
+                <h4 class="album">{{album.name}}</h4>
+                <img [src]="album.imageUrl" alt="{{album.name}}">
+              </div>
+          </div>
         </div>
     </div>
   </div>
