@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { Album } from './models/Albums';
+import { Song } from './models/Song';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +18,15 @@ export class AppComponent {
   title = 'TP1';
 
   artist : string = "";
+  titre : string = "";
   ListAlbum : Album[] = [];
   ListChansons : string[] = [];
 
   constructor(public http : HttpClient){}
 
-  async searchArtist():Promise<void>{
+  async searchAlbum():Promise<void>{
 
-    let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.getTopAlbums&artist=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
+    let x = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + this.artist + "&api_key=9a8a3facebbccaf363bb9fd68fa37abf&format=json"));
     console.log(x);
     this.ListAlbum = [];
     for(let i = 0; i < x.topalbums.album.length; i++){
@@ -32,9 +34,20 @@ export class AppComponent {
       this.ListAlbum.push(new Album(albumData.name, albumData.artist.name, albumData.image[2]['#text']))
     }
   }
+  /*async GetSong():Promise<void>{
+
+    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=9a8a3facebbccaf363bb9fd68fa37abf&artist=" + this.artist + "&album="+ this.titre +"&format=json"));
+    console.log(y);
+    this.ListChansons = [];
+    for(let i = 0; i < y.topalbum.length; i++){
+      this.ListAlbum = [];
+      this.ListChansons.push()
+    }
+  }*/
 
   newSearch():void{
     this.ListAlbum = []
+    this.ListChansons = []
     this.artist = ""
   }
 }

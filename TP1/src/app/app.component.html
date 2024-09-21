@@ -5,7 +5,7 @@
   </header>
   <div class="row">
     <div class="col-3">
-      <form (ngSubmit)="searchArtist()">
+      <form (ngSubmit)="searchAlbum()">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
@@ -14,7 +14,7 @@
       </form>
     </div>
     <div class="col artists">
-      <h3>Albums de l'artiste {{artist}}</h3>
+      <h3 style="color: black;">Albums de l'artiste {{artist}}</h3>
         <div class="album">
           <div *ngFor="let album of ListAlbum">
               <div class="card">
