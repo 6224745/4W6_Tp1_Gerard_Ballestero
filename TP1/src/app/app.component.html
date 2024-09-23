@@ -4,7 +4,7 @@
     <div class="col"><h1>Requêtes musicales</h1></div>
   </header>
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 align-items-center">
       <form (ngSubmit)="searchAlbum()">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
@@ -26,7 +26,7 @@
         <div *ngIf="ListChansons.length > 0">
           <h3 style="color: black;">Chansons de l'album {{titre}}</h3>
           <ul>
-            <li style="color: black; padding: 0px;" *ngFor="let chanson of ListChansons">{{ chanson }}</li>
+            <li style="color: black" *ngFor="let chanson of ListChansons">{{ chanson }}</li>
           </ul>
         </div>
     </div>
