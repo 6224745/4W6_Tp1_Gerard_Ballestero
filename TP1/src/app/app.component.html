@@ -19,9 +19,15 @@
           <div *ngFor="let album of ListAlbum">
               <div class="card">
                 <h4 class="album">{{album.name}}</h4>
-                <img [src]="album.imageUrl" alt="{{album.name}}">
+                <img [src]="album.imageUrl" alt="{{album.name}}" (click)="GetSong(album.name)">
               </div>
           </div>
+        </div>
+        <div *ngIf="ListChansons.length > 0">
+          <h3 style="color: black;">Chansons de l'album {{titre}}</h3>
+          <ul>
+            <li style="color: black; padding: 0px;" *ngFor="let chanson of ListChansons">{{ chanson }}</li>
+          </ul>
         </div>
     </div>
   </div>

@@ -34,16 +34,16 @@ export class AppComponent {
       this.ListAlbum.push(new Album(albumData.name, albumData.artist.name, albumData.image[2]['#text']))
     }
   }
-  /*async GetSong():Promise<void>{
-
-    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=9a8a3facebbccaf363bb9fd68fa37abf&artist=" + this.artist + "&album="+ this.titre +"&format=json"));
+  async GetSong(titreAlbum: string):Promise<void>{
+    this.titre = titreAlbum
+    let y = await lastValueFrom(this.http.get<any>("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=9a8a3facebbccaf363bb9fd68fa37abf&artist=" + this.artist + "&album=" + titreAlbum + "&format=json"));
     console.log(y);
     this.ListChansons = [];
-    for(let i = 0; i < y.topalbum.length; i++){
+    for(let i = 0; i < y.album.tracks.track.length; i++){
       this.ListAlbum = [];
-      this.ListChansons.push()
+      this.ListChansons.push(y.album.tracks.track[i].name)
     }
-  }*/
+  }
 
   newSearch():void{
     this.ListAlbum = []
