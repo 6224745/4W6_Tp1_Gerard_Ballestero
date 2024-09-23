@@ -40,7 +40,6 @@ export class AppComponent {
     console.log(y);
     this.ListChansons = [];
     for(let i = 0; i < y.album.tracks.track.length; i++){
-      this.ListAlbum = [];
       this.ListChansons.push(y.album.tracks.track[i].name)
     }
   }
